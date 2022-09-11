@@ -2,14 +2,20 @@
 // This file is not actually executed
 // It is just used by flow for typing
 
-const prefix: string = 'Invariant failed';
-
 export default function invariant(
-  condition: mixed,
+  condition: any,
   message?: string | (() => string),
+  prefix: string = "",
 ) {
   if (condition) {
     return;
   }
-  throw new Error(`${prefix}: ${message || ''}`);
+
+  const provided: string | undefined =
+    typeof message === 'function' ? message() : message;
+
+  if (provided &&prefix && !prefix.endsWith(": ")) prefix += ": "
+
+  const value: string = provided ? `${prefix}${provided}` : prefix;
+  throw new Error(value);
 }
