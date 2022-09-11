@@ -1,12 +1,13 @@
-# tiny-invariant 🔬💥
+# @arnu515/tiny-invariant 🔬💥
 
-[![Build Status](https://travis-ci.org/alexreardon/tiny-invariant.svg?branch=master)](https://travis-ci.org/alexreardon/tiny-invariant)
-[![npm](https://img.shields.io/npm/v/tiny-invariant.svg)](https://www.npmjs.com/package/tiny-invariant) [![dependencies](https://david-dm.org/alexreardon/tiny-invariant.svg)](https://david-dm.org/alexreardon/tiny-invariant)
-![types](https://img.shields.io/badge/types-typescript%20%7C%20flow-blueviolet)
-[![minzip](https://img.shields.io/bundlephobia/minzip/tiny-invariant.svg)](https://www.npmjs.com/package/tiny-invariant)
-[![Downloads per month](https://img.shields.io/npm/dm/tiny-invariant.svg)](https://www.npmjs.com/package/tiny-invariant)
+A tiny [`invariant`](https://www.npmjs.com/package/invariant) fork with some things changed.
 
-A tiny [`invariant`](https://www.npmjs.com/package/invariant) alternative.
+## Things that changed
+
+- No prefix by default
+- Specify custom prefix
+
+**ORIGINAL README BELOW**
 
 ## What is `invariant`?
 
