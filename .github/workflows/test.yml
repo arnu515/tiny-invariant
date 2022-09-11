@@ -29,6 +29,10 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      # Validates project
+      - name: Typescript + prettier checks
+        run: yarn validate
+
       # Run tests
       - name: Tests
         run: yarn test
