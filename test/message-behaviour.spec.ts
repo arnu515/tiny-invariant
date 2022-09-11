@@ -1,23 +1,41 @@
 // @flow
 import invariant from '../src/tiny-invariant';
 
-it('should include a default message when an invariant does throw and no message is provided', () => {
+it('should not have any message when it isn\' explicitly passed', () => {
   try {
     invariant(false);
   } catch (e) {
     invariant(e instanceof Error);
-    expect(e.message).toEqual('Invariant failed');
+    expect(e.message).toEqual('');
   }
 });
 
-it('should include a provided message when an invariant does throw', () => {
+it('should have no prefix by default', () => {
   try {
     invariant(false, 'my message');
   } catch (e) {
     invariant(e instanceof Error);
-    expect(e.message).toEqual('Invariant failed: my message');
+    expect(e.message).toEqual('my message');
   }
 });
+
+it('should have a prefix if passed', () => {
+  try {
+    invariant(false, 'my message', 'my prefix');
+  } catch (e) {
+    invariant(e instanceof Error);
+    expect(e.message).toEqual('my prefix: my message');
+  }
+});
+
+it('should have only the prefix without \': \' if there is no message', () => {
+  try {
+    invariant(false, undefined, 'my prefix');
+  } catch (e) {
+    invariant(e instanceof Error);
+    expect(e.message).toEqual('my prefix');
+  }
+})
 
 it('should not execute a message function if the invariant does not throw', () => {
   const message = jest.fn(() => 'lazy message');
@@ -32,6 +50,6 @@ it('should execute a message function if the invariant does throw', () => {
   } catch (e) {
     invariant(e instanceof Error);
     expect(message).toHaveBeenCalled();
-    expect(e.message).toEqual('Invariant failed: lazy message');
+    expect(e.message).toEqual('lazy message');
   }
 });
